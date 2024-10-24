@@ -6,15 +6,15 @@ import axios from 'config/axiosConfig';
 
 function App() {
   const [count, setCount] = useState(0);
-  const [showResponse, setShowResponse] = useState('');
 
   const clickHandler = async () => {
     setCount((count) => count + 1);
 
     const route = `demo`;
     const response = await axios.get(route);
-
-    setShowResponse(response.data);
+    console.group('App.tsx', 'clickHandler', '15');
+    console.log('DEBUG1', response.data);
+    console.groupEnd();
   }
 
   return (
@@ -28,7 +28,6 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
-      {showResponse && <p>{showResponse}</p>}
       <div className="card">
         <button onClick={clickHandler}>
           count is {count}
